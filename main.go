@@ -24,7 +24,10 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
     if requestedStatusString == "" {
         requestedStatusString = "200"
     }
-    status, _ := strconv.Atoi(requestedStatusString)
+    status, err := strconv.Atoi(requestedStatusString)
+    if err != nil {
+        status = 200
+    }
 	w.WriteHeader(status)
 	fmt.Fprint(w, status)
 	fmt.Println(time.Now().Format(time.RFC3339), r.Method, r.URL, r.UserAgent())

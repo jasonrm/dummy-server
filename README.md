@@ -2,9 +2,8 @@
 
 | Request Path      | Response Status Code |
 |-------------------|----------------------|
-| /                 | 200                  |
-| /XXX              | XXX                  |
-| _everything else_ | 000                  |
+| /NNN              | NNN                  |
+| _everything else_ | 200                  |
 
 ## Usage
 
