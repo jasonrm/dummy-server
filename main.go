@@ -30,5 +30,5 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
     }
 	w.WriteHeader(status)
 	fmt.Fprint(w, status)
-	fmt.Println(time.Now().Format(time.RFC3339), r.Method, r.URL, r.UserAgent())
+	fmt.Println(time.Now().Format(time.RFC3339), r.Method, status, r.URL, r.UserAgent())
 }
