@@ -1,16 +1,22 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-	"strconv"
-	"time"
+    "fmt"
+    "net/http"
+    "strconv"
+    "time"
+    "flag"
 )
 
 func main() {
+    portPtr := flag.Int("port", 8080, "port number")
+    flag.Parse()
+
+    listenStr := fmt.Sprintf(":%d", *portPtr)
+
+    fmt.Println(time.Now().Format(time.RFC3339), "Listening On", listenStr);
     http.HandleFunc("/", handleRequest)
-	fmt.Println(time.Now().Format(time.RFC3339), "Ready");
-    http.ListenAndServe(":8080", nil)
+    http.ListenAndServe(listenStr, nil)
 }
 
 func handleRequest(w http.ResponseWriter, r *http.Request) {
